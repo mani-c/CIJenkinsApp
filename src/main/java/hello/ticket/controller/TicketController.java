@@ -1,5 +1,9 @@
 package hello.ticket.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +14,7 @@ import hello.ticket.model.Ticket;
 import hello.ticket.service.TicketService;
 
 @RestController
-@RequestMapping("/ticket")
+@RequestMapping("/")
 public class TicketController {
 
 	@Autowired
@@ -21,6 +25,13 @@ public class TicketController {
 		ticketService.create(ticket) ;
 		return ticket ; 
 	}
+	
+	@RequestMapping( value = "/tickets"  )
+	public Map<String , List<Ticket>> getTickets(  ) {
+		Map<String, List<Ticket>> ticketMap = new HashMap<String,List<Ticket>>();
+		ticketMap.put("ticket", ticketService.getTickets() ) ; 
+		return ticketMap ;  
+	} 
 	
 	
 	
