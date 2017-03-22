@@ -29,6 +29,7 @@ public class TicketController {
 	@RequestMapping( value = "/tickets"  )
 	public Map<String , List<Ticket>> getTickets(  ) {
 		Map<String, List<Ticket>> ticketMap = new HashMap<String,List<Ticket>>();
+		System.out.println("sample");
 		ticketMap.put("ticket", ticketService.getTickets() ) ; 
 		return ticketMap ;  
 	} 
